@@ -5,7 +5,7 @@ This repository contains the CPU-only (Docker-based, version 7) implementation o
 
 **Reference to formalism description:**
 - Zenodo DOI: [https://zenodo.org/records/16762105](https://zenodo.org/records/16762105)
-- Live web interface: [https://dynamath-dynaflow.vercel.app/](https://dynamath-dynaflow.vercel.app/)
+- Formalism vizual representation: [https://dynamath-dynaflow.vercel.app/](https://dynamath-dynaflow.vercel.app/)
 
 ## 1. Scientific Motivation
 The **Dynamath** framework models evolving systems as **weighted dynamic graphs** with time-dependent node states and distance-modulated connectivity. This build extends prior work by introducing a **live sensory channel** (video feed) to:
