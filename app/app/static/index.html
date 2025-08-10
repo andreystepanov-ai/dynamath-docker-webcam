@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dynamath CPU Live — v7 (autofit + heartbeat)</title>
+  <link rel="stylesheet" href="/static/style.css?v=7" />
+</head>
+<body>
+  <header>
+    <h1>Dynamath CPU Live</h1>
+    <p>Entities, dynamic graph, drift & entropy — CPU-only, in Docker (v7)</p>
+  </header>
+
+  <main>
+    <section class="controls panel">
+      <div class="row">
+        <label>Speed dt
+          <input id="ctrl-speed" type="range" min="0.005" max="0.08" step="0.005" value="0.020">
+          <span id="val-speed">0.020</span>
+        </label>
+        <label>Neighbor pull k
+          <input id="ctrl-pull" type="range" min="0.0" max="0.05" step="0.002" value="0.010">
+          <span id="val-pull">0.010</span>
+        </label>
+        <label>Edge threshold
+          <input id="ctrl-thr" type="range" min="0.0" max="0.2" step="0.005" value="0.060">
+          <span id="val-thr">0.060</span>
+        </label>
+      </div>
+      <div class="row">
+        <label>α (A=sim)
+          <input id="ctrl-a" type="range" min="0.0" max="0.6" step="0.02" value="0.20">
+          <span id="val-a">0.20</span>
+        </label>
+        <label>β (D=dist)
+          <input id="ctrl-b" type="range" min="0.0" max="0.2" step="0.01" value="0.05">
+          <span id="val-b">0.05</span>
+        </label>
+        <label>γ (C=consistency)
+          <input id="ctrl-g" type="range" min="0.0" max="0.6" step="0.02" value="0.10">
+          <span id="val-g">0.10</span>
+        </label>
+      </div>
+      <div class="row">
+        <button id="btn-freeze">Freeze flow</button>
+        <button id="btn-reset">Reset</button>
+        <button id="btn-webcam">Enable webcam</button>
+      </div>
+      <details class="help">
+        <summary>Show formulas</summary>
+        <div class="helpbox">
+          <div><b>Field:</b> ρ(e⃗) → Φ;  F = −∇Φ</div>
+          <div><b>Flow:</b> e⃗ ← e⃗ + dt·F(e⃗,t) + η·Δe(U_t)</div>
+          <div><b>State:</b> S ← tanh(S + a·R_ctx + b·U_t)</div>
+          <div><b>Edges:</b> w ← w + (α·A − β·D + γ·C)</div>
+          <div><b>Metrics:</b> Drift ‖S₀−S‖, Entropy H(p)</div>
+        </div>
+      </details>
+    </section>
+
+    <section class="panel">
+      <canvas id="scene" width="920" height="520"></canvas>
+      <div class="legend">
+        <span class="dot node"></span> Entities
+        <span class="dot edge" style="border-radius:3px;"></span> Edges (thicker = higher weight)
+      </div>
+    </section>
+
+    <section class="panel metrics">
+      <canvas id="chart" width="920" height="220"></canvas>
+      <div class="legend">
+        <span class="line drift"></span> Drift ‖S₀−S_t‖
+        <span class="line entropy"></span> Entropy H(p)
+      </div>
+    </section>
+  </main>
+
+  <footer><small>FastAPI · WebSocket · Canvas · CPU-only (v7)</small></footer>
+
+  <video id="cam" autoplay playsinline style="display:none"></video>
+  <canvas id="camc" width="140" height="140" style="display:none"></canvas>
+
+  <script src="/static/app.js?v=7"></script>
+</body>
+</html>
