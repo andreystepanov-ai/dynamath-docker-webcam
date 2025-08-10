@@ -94,5 +94,5 @@ By bridging theoretical constructs with empirical, measurable phenomena, this se
 
 ## References
 - Formalism Record — [https://zenodo.org/records/16762105](https://zenodo.org/records/16762105)
-- Live Web Interface — [https://dynamath-dynaflow.vercel.app/](https://dynamath-dynaflow.vercel.app/)
+- A standalone formalism visualization — [https://dynamath-dynaflow.vercel.app/](https://dynamath-dynaflow.vercel.app/)
 - Associated mathematical derivations and theoretical framework — see Zenodo record.
